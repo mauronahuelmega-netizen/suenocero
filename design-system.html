@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Design System — Sueño Cero SRL</title>
+
+  <!-- Link a tu CSS principal (reemplazar ruta si necesario) -->
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilos específicos para la página del UI Kit (mínimos, no rompen tu styles.css) */
+    .ds-hero { padding: 48px 0 24px; border-bottom: 1px solid var(--border); }
+    .ds-section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .row { display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start; }
+    .col { flex:1 1 240px; min-width:220px; }
+    .swatch { height:68px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;}
+    pre.code { background:#f7f7f7;padding:12px;border-radius:8px;overflow:auto;font-size:13px;color:#333 }
+    .card-demo { padding:18px;border:1px solid var(--border);border-radius:12px;background:var(--bg); }
+    .num-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:10px; }
+    .numero { padding:12px 0;border:1px solid var(--border);border-radius:8px;text-align:center;cursor:pointer;user-select:none; }
+    .numero.seleccionado { background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent-bg); }
+    .numero.ocupado { background:#e8e8e8;color:#9b9b9b;border-color:#d0d0d0;cursor:not-allowed; }
+    .controls { margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .badge { display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--border);font-weight:600;background:transparent; }
+    .section-title { font-size:20px;font-weight:700;margin-bottom:14px; }
+    .muted { color:var(--muted); }
+    footer.ds-footer { padding:28px 0;border-top:1px solid var(--border);margin-top:40px; }
+    /* pequeño media tweak para la página */
+    @media (max-width:720px){
+      .row { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER sencillo (coincide con tu header) -->
+  <header class="main-header" style="position:sticky;top:0;z-index:60;">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:var(--header-height);">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <img src="/assets/logo.png" alt="Sueño Cero" style="height:26px;">
+        <div style="font-weight:700;">Design System — Sueño Cero</div>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;">
+        <a href="/inicio" class="btn-outline" style="padding:8px 14px;">Ver sitio</a>
+        <button id="ds-theme-toggle" style="padding:8px;border-radius:8px;border:1px solid var(--border);background:none;cursor:pointer;">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="ds-hero">
+      <h1 style="font-size:clamp(28px,4vw,40px);font-weight:700;">Design System / UI Kit</h1>
+      <p class="muted" style="max-width:780px;margin-top:8px;">Guía visual y componentes reutilizables para Sueño Cero SRL — paleta, tipografía, botones, tarjetas, inputs, acordeones, selector de números y ejemplos de layout.</p>
+    </section>
+
+    <!-- PALETA -->
+    <section class="ds-section" aria-labelledby="paleta">
+      <h2 id="paleta" class="section-title">Paleta</h2>
+      <div class="row">
+        <div class="col">
+          <div class="swatch" style="background:var(--bg);border:1px solid var(--border);color:var(--text);">--bg <span style="margin-left:8px;font-weight:500;color:var(--muted)"></span></div>
+          <div style="margin-top:12px;">Fondo principal</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--text);color:var(--accent-text);">--text</div>
+          <div style="margin-top:12px;">Texto principal</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--muted);color:#fff">--muted</div>
+          <div style="margin-top:12px;">Texto secundario</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--border);color:var(--text)">--border</div>
+          <div style="margin-top:12px;">Bordes / separadores</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--accent-bg);color:var(--accent-text)">CTA</div>
+          <div style="margin-top:12px;">Botón / CTA</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPOGRAFÍA -->
+    <section class="ds-section" aria-labelledby="tipografia">
+      <h2 id="tipografia" class="section-title">Tipografía</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <div style="min-width:260px;">
+          <h1 style="font-size:40px;margin-bottom:8px;">H1 — 40px</h1>
+          <h2 style="font-size:28px;margin-bottom:6px;">H2 — 28px</h2>
+          <h3 style="font-size:22px;margin-bottom:6px;">H3 — 22px</h3>
+          <p style="font-size:16px;color:var(--muted)">P — 16px / Texto de ejemplo para cuerpo. Mantener legibilidad y line-height cómodo.</p>
+        </div>
+
+        <div style="min-width:260px;">
+          <div style="margin-bottom:8px;"><strong>Pesos:</strong> 400 / 500 / 600 / 700</div>
+          <pre class="code"><code>font-family: Inter, system-ui, sans-serif;
+font-size: 16px;
+line-height: 1.5;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTONES -->
+    <section class="ds-section" aria-labelledby="botones">
+      <h2 id="botones" class="section-title">Botones</h2>
+
+      <div class="row">
+        <div class="col card-demo">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn-primary">Primario</button>
+            <button class="btn-outline">Secundario</button>
+            <button class="btn-outline" style="opacity:.6;">Ghost</button>
+          </div>
+
+          <div style="margin-top:18px;">
+            <div style="margin-bottom:8px;font-weight:600;">Tamaños</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn-primary" style="padding:10px 14px;font-size:14px;">S</button>
+              <button class="btn-primary" style="padding:14px 22px;font-size:15px;">M</button>
+              <button class="btn-primary" style="padding:18px 28px;font-size:16px;">L</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:600;margin-bottom:8px;">Estado</div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn-primary" disabled style="opacity:.6;cursor:not-allowed;">Disabled</button>
+            <button class="btn-primary" style="box-shadow:0 6px 18px rgba(0,0,0,0.06)">Elevado</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INPUTS -->
+    <section class="ds-section" aria-labelledby="inputs">
+      <h2 id="inputs" class="section-title">Formularios / Inputs</h2>
+
+      <div class="row">
+        <div class="col card-demo">
+          <label style="display:block;font-weight:600;margin-bottom:8px;">Input de texto</label>
+          <input placeholder="Tu nombre completo" style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border)">
+
+          <div style="margin-top:12px;">
+            <label style="display:block;font-weight:600;margin-bottom:8px;">Textarea</label>
+            <textarea placeholder="Mensaje..." style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);min-height:120px;"></textarea>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <label style="display:block;font-weight:600;margin-bottom:8px;">Checkbox / Radio</label>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <label style="display:flex;gap:8px;align-items:center;"><input type="checkbox"> Acepto términos</label>
+            <label style="display:flex;gap:8px;align-items:center;"><input type="radio" name="r"> Opción</label>
+          </div>
+
+          <div style="margin-top:18px;">
+            <label style="display:block;font-weight:600;margin-bottom:8px;">Helper text</label>
+            <div class="muted">Texto de ayuda o error (usar color --muted)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARJETAS -->
+    <section class="ds-section" aria-labelledby="cards">
+      <h2 id="cards" class="section-title">Tarjetas (Cards)</h2>
+
+      <div class="row">
+        <div class="col card-demo">
+          <div style="font-weight:700;margin-bottom:8px;">Card estándar</div>
+          <div style="color:var(--muted);margin-bottom:12px;">Usar para bloques de información y listados.</div>
+          <div style="border-top:1px solid var(--border);padding-top:12px;">
+            <small class="muted">Meta información</small>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:700;margin-bottom:8px;">Card con CTA</div>
+          <p class="muted">Breve descripción y acción.</p>
+          <div style="margin-top:12px;">
+            <button class="btn-primary">Acción</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTOR DE NÚMEROS (demo interactiva) -->
+    <section class="ds-section" aria-labelledby="selector">
+      <h2 id="selector" class="section-title">Selector de números (demo)</h2>
+      <div class="row">
+        <div class="col">
+          <div style="font-weight:600;margin-bottom:8px;">Disponibles</div>
+          <div id="ds-grid" class="num-grid" style="margin-top:8px;">
+            <!-- generados por JS -->
+          </div>
+
+          <div class="controls">
+            <div class="badge">Seleccionados: <span id="ds-count">0</span></div>
+            <div class="badge">Total: $<span id="ds-total">0</span></div>
+            <button id="ds-clear" class="btn-outline">Vaciar</button>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:700;margin-bottom:10px;">Reglas</div>
+          <ul class="muted">
+            <li>Hacé clic para seleccionar / deseleccionar</li>
+            <li>Estado ocupado = no seleccionable</li>
+            <li>Precio por número: $100 (demo)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACORDEÓN -->
+    <section class="ds-section" aria-labelledby="acordeon">
+      <h2 id="acordeon" class="section-title">Acordeón (FAQ demo)</h2>
+
+      <div style="display:flex;gap:16px;flex-direction:column;">
+        <div class="card-demo" style="padding:16px;">
+          <div class="faq-item">
+            <button class="faq-toggle" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px;border:none;background:none;cursor:pointer;">
+              <span style="font-weight:600;">¿Cómo funciona la reserva?</span>
+              <span class="faq-arrow">▸</span>
+            </button>
+            <div class="faq-content" style="display:none;color:var(--muted);padding-top:8px;">
+              Seleccionás los números, completás datos y confirmás la reserva. El sistema registra la operación.
+            </div>
+          </div>
+
+          <hr style="margin:12px 0;border-color:var(--border)">
+
+          <div class="faq-item">
+            <button class="faq-toggle" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px;border:none;background:none;cursor:pointer;">
+              <span style="font-weight:600;">¿Cómo sé si gané?</span>
+              <span class="faq-arrow">▸</span>
+            </button>
+            <div class="faq-content" style="display:none;color:var(--muted);padding-top:8px;">
+              El resultado se publica en la web y se notifica por correo a los ganadores.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING GUIDE -->
+    <section class="ds-section" aria-labelledby="spacing">
+      <h2 id="spacing" class="section-title">Espaciado / Layout</h2>
+      <div class="row">
+        <div class="col card-demo">
+          <div style="margin-bottom:12px;font-weight:600;">Reglas</div>
+          <ul class="muted">
+            <li>Secciones: 60–120px</li>
+            <li>Padding interno: 24–40px</li>
+            <li>Max width del contenido: 1100–1200px</li>
+          </ul>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:600;margin-bottom:8px;">Ejemplo</div>
+          <div style="height:80px;border-radius:8px;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;">Caja de muestra</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UTILIDADES / CLASES -->
+    <section class="ds-section" aria-labelledby="utils">
+      <h2 id="utils" class="section-title">Utilidades</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div class="badge">.text-muted</div>
+        <div class="badge">.text-center</div>
+        <div class="badge">.mb-lg</div>
+        <div class="badge">.grid</div>
+      </div>
+    </section>
+
+    <footer class="ds-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <img src="/assets/logo.png" alt="Sueño Cero" style="height:26px;">
+          <div style="font-weight:700;">Sueño Cero SRL</div>
+        </div>
+
+        <div class="muted">Design System — versión demo. Uso interno.</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- SCRIPTS -->
+  <!-- Si ya tenés /main.js incluilo (controla el tema). -->
+  <script src="/main.js" defer></script>
+
+  <script>
+    // ======== Theme toggle fallback para esta página (si main.js no está presente) ========
+    (function(){
+      const dsToggle = document.getElementById('ds-theme-toggle');
+      if(!dsToggle) return;
+      const root = document.documentElement;
+      function apply(t){
+        root.setAttribute('data-theme', t);
+      }
+      const stored = localStorage.getItem('theme');
+      if(stored) apply(stored);
+      dsToggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(current);
+        localStorage.setItem('theme', current);
+      });
+    })();
+
+    // ======== Selector de números demo ========
+    (function(){
+      const grid = document.getElementById('ds-grid');
+      const countEl = document.getElementById('ds-count');
+      const totalEl = document.getElementById('ds-total');
+      const clearBtn = document.getElementById('ds-clear');
+
+      const PRICE = 100;
+      const TOTAL_NUMS = 28;
+
+      // Generar números demo; algunos ocupados
+      const ocupados = new Set([3,7,9,14,20]);
+
+      function render(){
+        grid.innerHTML = '';
+        for(let i=1;i<=TOTAL_NUMS;i++){
+          const el = document.createElement('div');
+          el.className = 'numero';
+          el.dataset.num = i;
+          el.textContent = String(i).padStart(2,'0');
+
+          if (ocupados.has(i)) el.classList.add('ocupado');
+
+          el.addEventListener('click', function(){
+            if (el.classList.contains('ocupado')) return;
+            el.classList.toggle('seleccionado');
+            updateStats();
+          });
+
+          grid.appendChild(el);
+        }
+        updateStats();
+      }
+
+      function updateStats(){
+        const selected = grid.querySelectorAll('.numero.seleccionado');
+        const count = selected.length;
+        countEl.textContent = count;
+        totalEl.textContent = (count * PRICE).toString();
+      }
+
+      clearBtn.addEventListener('click', function(){
+        grid.querySelectorAll('.numero.seleccionado').forEach(n=>n.classList.remove('seleccionado'));
+        updateStats();
+      });
+
+      render();
+    })();
+
+    // ======== Acordeón simple ========
+    (function(){
+      document.querySelectorAll('.faq-toggle').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const parent = btn.closest('.faq-item');
+          const content = parent.querySelector('.faq-content');
+          const arrow = btn.querySelector('.faq-arrow');
+          const isOpen = content.style.display === 'block';
+          if(isOpen){
+            content.style.display = 'none';
+            arrow.textContent = '▸';
+          } else {
+            content.style.display = 'block';
+            arrow.textContent = '▾';
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html><!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Design System — Sueño Cero SRL</title>
+
+  <!-- Link a tu CSS principal (reemplazar ruta si necesario) -->
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilos específicos para la página del UI Kit (mínimos, no rompen tu styles.css) */
+    .ds-hero { padding: 48px 0 24px; border-bottom: 1px solid var(--border); }
+    .ds-section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .row { display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start; }
+    .col { flex:1 1 240px; min-width:220px; }
+    .swatch { height:68px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;}
+    pre.code { background:#f7f7f7;padding:12px;border-radius:8px;overflow:auto;font-size:13px;color:#333 }
+    .card-demo { padding:18px;border:1px solid var(--border);border-radius:12px;background:var(--bg); }
+    .num-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:10px; }
+    .numero { padding:12px 0;border:1px solid var(--border);border-radius:8px;text-align:center;cursor:pointer;user-select:none; }
+    .numero.seleccionado { background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent-bg); }
+    .numero.ocupado { background:#e8e8e8;color:#9b9b9b;border-color:#d0d0d0;cursor:not-allowed; }
+    .controls { margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .badge { display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--border);font-weight:600;background:transparent; }
+    .section-title { font-size:20px;font-weight:700;margin-bottom:14px; }
+    .muted { color:var(--muted); }
+    footer.ds-footer { padding:28px 0;border-top:1px solid var(--border);margin-top:40px; }
+    /* pequeño media tweak para la página */
+    @media (max-width:720px){
+      .row { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER sencillo (coincide con tu header) -->
+  <header class="main-header" style="position:sticky;top:0;z-index:60;">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:var(--header-height);">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <img src="/assets/logo.png" alt="Sueño Cero" style="height:26px;">
+        <div style="font-weight:700;">Design System — Sueño Cero</div>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;">
+        <a href="/inicio" class="btn-outline" style="padding:8px 14px;">Ver sitio</a>
+        <button id="ds-theme-toggle" style="padding:8px;border-radius:8px;border:1px solid var(--border);background:none;cursor:pointer;">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="ds-hero">
+      <h1 style="font-size:clamp(28px,4vw,40px);font-weight:700;">Design System / UI Kit</h1>
+      <p class="muted" style="max-width:780px;margin-top:8px;">Guía visual y componentes reutilizables para Sueño Cero SRL — paleta, tipografía, botones, tarjetas, inputs, acordeones, selector de números y ejemplos de layout.</p>
+    </section>
+
+    <!-- PALETA -->
+    <section class="ds-section" aria-labelledby="paleta">
+      <h2 id="paleta" class="section-title">Paleta</h2>
+      <div class="row">
+        <div class="col">
+          <div class="swatch" style="background:var(--bg);border:1px solid var(--border);color:var(--text);">--bg <span style="margin-left:8px;font-weight:500;color:var(--muted)"></span></div>
+          <div style="margin-top:12px;">Fondo principal</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--text);color:var(--accent-text);">--text</div>
+          <div style="margin-top:12px;">Texto principal</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--muted);color:#fff">--muted</div>
+          <div style="margin-top:12px;">Texto secundario</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--border);color:var(--text)">--border</div>
+          <div style="margin-top:12px;">Bordes / separadores</div>
+        </div>
+
+        <div class="col">
+          <div class="swatch" style="background:var(--accent-bg);color:var(--accent-text)">CTA</div>
+          <div style="margin-top:12px;">Botón / CTA</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPOGRAFÍA -->
+    <section class="ds-section" aria-labelledby="tipografia">
+      <h2 id="tipografia" class="section-title">Tipografía</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <div style="min-width:260px;">
+          <h1 style="font-size:40px;margin-bottom:8px;">H1 — 40px</h1>
+          <h2 style="font-size:28px;margin-bottom:6px;">H2 — 28px</h2>
+          <h3 style="font-size:22px;margin-bottom:6px;">H3 — 22px</h3>
+          <p style="font-size:16px;color:var(--muted)">P — 16px / Texto de ejemplo para cuerpo. Mantener legibilidad y line-height cómodo.</p>
+        </div>
+
+        <div style="min-width:260px;">
+          <div style="margin-bottom:8px;"><strong>Pesos:</strong> 400 / 500 / 600 / 700</div>
+          <pre class="code"><code>font-family: Inter, system-ui, sans-serif;
+font-size: 16px;
+line-height: 1.5;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTONES -->
+    <section class="ds-section" aria-labelledby="botones">
+      <h2 id="botones" class="section-title">Botones</h2>
+
+      <div class="row">
+        <div class="col card-demo">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn-primary">Primario</button>
+            <button class="btn-outline">Secundario</button>
+            <button class="btn-outline" style="opacity:.6;">Ghost</button>
+          </div>
+
+          <div style="margin-top:18px;">
+            <div style="margin-bottom:8px;font-weight:600;">Tamaños</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn-primary" style="padding:10px 14px;font-size:14px;">S</button>
+              <button class="btn-primary" style="padding:14px 22px;font-size:15px;">M</button>
+              <button class="btn-primary" style="padding:18px 28px;font-size:16px;">L</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:600;margin-bottom:8px;">Estado</div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn-primary" disabled style="opacity:.6;cursor:not-allowed;">Disabled</button>
+            <button class="btn-primary" style="box-shadow:0 6px 18px rgba(0,0,0,0.06)">Elevado</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INPUTS -->
+    <section class="ds-section" aria-labelledby="inputs">
+      <h2 id="inputs" class="section-title">Formularios / Inputs</h2>
+
+      <div class="row">
+        <div class="col card-demo">
+          <label style="display:block;font-weight:600;margin-bottom:8px;">Input de texto</label>
+          <input placeholder="Tu nombre completo" style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border)">
+
+          <div style="margin-top:12px;">
+            <label style="display:block;font-weight:600;margin-bottom:8px;">Textarea</label>
+            <textarea placeholder="Mensaje..." style="width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);min-height:120px;"></textarea>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <label style="display:block;font-weight:600;margin-bottom:8px;">Checkbox / Radio</label>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <label style="display:flex;gap:8px;align-items:center;"><input type="checkbox"> Acepto términos</label>
+            <label style="display:flex;gap:8px;align-items:center;"><input type="radio" name="r"> Opción</label>
+          </div>
+
+          <div style="margin-top:18px;">
+            <label style="display:block;font-weight:600;margin-bottom:8px;">Helper text</label>
+            <div class="muted">Texto de ayuda o error (usar color --muted)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARJETAS -->
+    <section class="ds-section" aria-labelledby="cards">
+      <h2 id="cards" class="section-title">Tarjetas (Cards)</h2>
+
+      <div class="row">
+        <div class="col card-demo">
+          <div style="font-weight:700;margin-bottom:8px;">Card estándar</div>
+          <div style="color:var(--muted);margin-bottom:12px;">Usar para bloques de información y listados.</div>
+          <div style="border-top:1px solid var(--border);padding-top:12px;">
+            <small class="muted">Meta información</small>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:700;margin-bottom:8px;">Card con CTA</div>
+          <p class="muted">Breve descripción y acción.</p>
+          <div style="margin-top:12px;">
+            <button class="btn-primary">Acción</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTOR DE NÚMEROS (demo interactiva) -->
+    <section class="ds-section" aria-labelledby="selector">
+      <h2 id="selector" class="section-title">Selector de números (demo)</h2>
+      <div class="row">
+        <div class="col">
+          <div style="font-weight:600;margin-bottom:8px;">Disponibles</div>
+          <div id="ds-grid" class="num-grid" style="margin-top:8px;">
+            <!-- generados por JS -->
+          </div>
+
+          <div class="controls">
+            <div class="badge">Seleccionados: <span id="ds-count">0</span></div>
+            <div class="badge">Total: $<span id="ds-total">0</span></div>
+            <button id="ds-clear" class="btn-outline">Vaciar</button>
+          </div>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:700;margin-bottom:10px;">Reglas</div>
+          <ul class="muted">
+            <li>Hacé clic para seleccionar / deseleccionar</li>
+            <li>Estado ocupado = no seleccionable</li>
+            <li>Precio por número: $100 (demo)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACORDEÓN -->
+    <section class="ds-section" aria-labelledby="acordeon">
+      <h2 id="acordeon" class="section-title">Acordeón (FAQ demo)</h2>
+
+      <div style="display:flex;gap:16px;flex-direction:column;">
+        <div class="card-demo" style="padding:16px;">
+          <div class="faq-item">
+            <button class="faq-toggle" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px;border:none;background:none;cursor:pointer;">
+              <span style="font-weight:600;">¿Cómo funciona la reserva?</span>
+              <span class="faq-arrow">▸</span>
+            </button>
+            <div class="faq-content" style="display:none;color:var(--muted);padding-top:8px;">
+              Seleccionás los números, completás datos y confirmás la reserva. El sistema registra la operación.
+            </div>
+          </div>
+
+          <hr style="margin:12px 0;border-color:var(--border)">
+
+          <div class="faq-item">
+            <button class="faq-toggle" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px;border:none;background:none;cursor:pointer;">
+              <span style="font-weight:600;">¿Cómo sé si gané?</span>
+              <span class="faq-arrow">▸</span>
+            </button>
+            <div class="faq-content" style="display:none;color:var(--muted);padding-top:8px;">
+              El resultado se publica en la web y se notifica por correo a los ganadores.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING GUIDE -->
+    <section class="ds-section" aria-labelledby="spacing">
+      <h2 id="spacing" class="section-title">Espaciado / Layout</h2>
+      <div class="row">
+        <div class="col card-demo">
+          <div style="margin-bottom:12px;font-weight:600;">Reglas</div>
+          <ul class="muted">
+            <li>Secciones: 60–120px</li>
+            <li>Padding interno: 24–40px</li>
+            <li>Max width del contenido: 1100–1200px</li>
+          </ul>
+        </div>
+
+        <div class="col card-demo">
+          <div style="font-weight:600;margin-bottom:8px;">Ejemplo</div>
+          <div style="height:80px;border-radius:8px;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;">Caja de muestra</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UTILIDADES / CLASES -->
+    <section class="ds-section" aria-labelledby="utils">
+      <h2 id="utils" class="section-title">Utilidades</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div class="badge">.text-muted</div>
+        <div class="badge">.text-center</div>
+        <div class="badge">.mb-lg</div>
+        <div class="badge">.grid</div>
+      </div>
+    </section>
+
+    <footer class="ds-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <img src="/assets/logo.png" alt="Sueño Cero" style="height:26px;">
+          <div style="font-weight:700;">Sueño Cero SRL</div>
+        </div>
+
+        <div class="muted">Design System — versión demo. Uso interno.</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- SCRIPTS -->
+  <!-- Si ya tenés /main.js incluilo (controla el tema). -->
+  <script src="/main.js" defer></script>
+
+  <script>
+    // ======== Theme toggle fallback para esta página (si main.js no está presente) ========
+    (function(){
+      const dsToggle = document.getElementById('ds-theme-toggle');
+      if(!dsToggle) return;
+      const root = document.documentElement;
+      function apply(t){
+        root.setAttribute('data-theme', t);
+      }
+      const stored = localStorage.getItem('theme');
+      if(stored) apply(stored);
+      dsToggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(current);
+        localStorage.setItem('theme', current);
+      });
+    })();
+
+    // ======== Selector de números demo ========
+    (function(){
+      const grid = document.getElementById('ds-grid');
+      const countEl = document.getElementById('ds-count');
+      const totalEl = document.getElementById('ds-total');
+      const clearBtn = document.getElementById('ds-clear');
+
+      const PRICE = 100;
+      const TOTAL_NUMS = 28;
+
+      // Generar números demo; algunos ocupados
+      const ocupados = new Set([3,7,9,14,20]);
+
+      function render(){
+        grid.innerHTML = '';
+        for(let i=1;i<=TOTAL_NUMS;i++){
+          const el = document.createElement('div');
+          el.className = 'numero';
+          el.dataset.num = i;
+          el.textContent = String(i).padStart(2,'0');
+
+          if (ocupados.has(i)) el.classList.add('ocupado');
+
+          el.addEventListener('click', function(){
+            if (el.classList.contains('ocupado')) return;
+            el.classList.toggle('seleccionado');
+            updateStats();
+          });
+
+          grid.appendChild(el);
+        }
+        updateStats();
+      }
+
+      function updateStats(){
+        const selected = grid.querySelectorAll('.numero.seleccionado');
+        const count = selected.length;
+        countEl.textContent = count;
+        totalEl.textContent = (count * PRICE).toString();
+      }
+
+      clearBtn.addEventListener('click', function(){
+        grid.querySelectorAll('.numero.seleccionado').forEach(n=>n.classList.remove('seleccionado'));
+        updateStats();
+      });
+
+      render();
+    })();
+
+    // ======== Acordeón simple ========
+    (function(){
+      document.querySelectorAll('.faq-toggle').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const parent = btn.closest('.faq-item');
+          const content = parent.querySelector('.faq-content');
+          const arrow = btn.querySelector('.faq-arrow');
+          const isOpen = content.style.display === 'block';
+          if(isOpen){
+            content.style.display = 'none';
+            arrow.textContent = '▸';
+          } else {
+            content.style.display = 'block';
+            arrow.textContent = '▾';
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/Reserva - Sueño Cero</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+<!-- =============================== -->
+<!--             HEADER              -->
+<!-- =============================== -->
+<header class="header">
+      
+      <a href="/inicio.html" class="header-left">
+        <img src="logo.png" alt="Logo Sueño Cero">
+        <span class="brand-name">SUEÑO CERO</span>
+      </a>
+      
+      <div class="header-right">
+        <a href="/reserva.html" class="btn-reservar-header">Reservar</a>
+        
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir Menú">☰</button>
+      </div>
+      
+    </header>
+    
+    <nav id="mobile-menu" class="mobile-menu">
+      <a href="/inicio.html">Inicio</a>
+      <a href="/reserva.html">Reserva</a>
+      <a href="/sobre-nosotros.html">Sobre Nosotros</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/bases-y-condiciones.html">Bases y Condiciones</a>
+      <a href="/privacidad.html">Privacidad</a>
+      <a href="/reserva.html" class="btn-reservar-menu">Reservar</a>
+    </nav>
+    
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+
+
+        </aside>
+      </section>
+
+    </div>
+</main>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<!-- =============================== -->
+<!--          FORMULARIO             -->
+<!-- =============================== -->
+<form id="form-reserva">
+  <h3>Reservar número</h3>
+
+  <label>Nombre</label>
+  <input type="text" id="nombre" required />
+
+  <label>Apellido</label>
+  <input type="text" id="apellido" required />
+
+  <label>Teléfono</label>
+  <input type="text" id="telefono" required />
+
+  <label>Email</label>
+  <input type="email" id="email" required />
+
+  <label>Número a reservar</label>
+  <input type="text" id="numero" required />
+
+  <button type="submit">Reservar</button>
+
+  <p id="mensaje"></p>
+</form>
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+<!-- =============================== -->
+<!--            FOOTER               -->
+<!-- =============================== -->
+<footer id="footer">
+<div class="footer-container">
+    <div class="footer-logo">
+        <img 
+            src="logo.png" 
+            alt="Logo Sueño Cero" 
+            class="logo-img"
+        >
+        <p class="logo-text">Sueño Cero</p>
+    </div>
+
+    <nav class="footer-nav">
+        <a href="inicio.html">Inicio</a>
+        <a href="faq.html">Preguntas frecuentes</a>
+        <a href="/reserva.html">Reservar número</a>
+    </nav>
+
+    <div class="footer-contact">
+        <a href="https://wa.me/tunumerodewhatsapp" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3"></path><path d="m6 10 6 6 6-6"></path><path d="M12 16V4"></path></svg>
+            WhatsApp
+        </a>
+        <a href="mailto:contacto@suenocero.com" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            contacto@suenocero.com
+        </a>
+    </div>
+
+    <p class="footer-legal">
+        &copy; 2025 Sueño Cero SRL. Todos los derechos reservados.
+    </p>
+</div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+<script src="hamburguesa.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabase = supabase.createClient(
+    "https://tqdxgunnxldokirpsqws.supabase.co", 
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxZHhndW5ueGxkb2tpcnBzcXdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2OTY2NjMsImV4cCI6MjA4MDI3MjY2M30.zyN1IHgoZx-rVNEFujyYWEISye_muU-bsoqngQzLxsk"
+  );
+
+  const form = document.getElementById("form-reserva");
+  const mensaje = document.getElementById("mensaje");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    mensaje.textContent = "Procesando...";
+    mensaje.style.color = "black";
+
+    const p_nombre = document.getElementById("nombre").value;
+    const p_apellido = document.getElementById("apellido").value;
+    const p_telefono = document.getElementById("telefono").value;
+    const p_email = document.getElementById("email").value;
+    const p_numero = document.getElementById("numero").value;
+
+    const { data, error } = await supabase.rpc("create_reserva", {
+      p_nombre,
+      p_apellido,
+      p_telefono,
+      p_email,
+      p_numero
+    });
+
+    if (error) {
+      mensaje.textContent = "Error: " + error.message;
+      mensaje.style.color = "red";
+      console.error(error);
+      return;
+    }
+
+    mensaje.textContent = "Reserva creada con éxito";
+    mensaje.style.color = "green";
+    console.log("Reserva:", data);
+  });
+</script>
+
+</body>
+</html>

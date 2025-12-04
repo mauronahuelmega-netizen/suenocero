@@ -1,0 +1,1549 @@
+/* --- RESET GLOBAL Y TIPOGRAFÍA --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #000000;
+    color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    /* Espacio fijo para el header de 70px */
+    padding-top: 70px; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+/* --- HEADER PRINCIPAL --- */
+.header {
+    width: 100%;
+    /* Altura definida: 70px */
+    height: 70px; 
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Aire lateral de 22px */
+    padding: 0 22px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+
+/* Izquierda: Logo y Nombre */
+.header-left {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para la imagen del logo */
+.header-left img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* Mantiene la forma circular */
+    object-fit: cover; 
+}
+
+/* Estilo de la marca */
+.brand-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    color: rgba(255,255,255,0.92);
+    margin-left: 8px;
+}
+
+/* Derecha: Agrupador CTA + Hamburguesa */
+.header-right {
+    display: flex;
+    align-items: center;
+    /* Espacio entre CTA y Hamburguesa: 12px */
+    gap: 12px;
+}
+
+/* Botón CTA Header (Outline Premium) */
+.btn-reservar-header {
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.25s, color 0.25s;
+    font-weight: 500;
+}
+
+.btn-reservar-header:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Botón Hamburguesa (Siempre visible) */
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- MENÚ LATERAL (SIDEBAR) --- */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    /* Oculto por defecto */
+    right: -280px; 
+    width: 280px;
+    height: 100vh;
+    background: #000;
+    padding: 80px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    /* Animación de 0.35s ease */
+    transition: right 0.35s ease;
+    z-index: 998; 
+    border-left: 1px solid #111;
+}
+
+/* Clase para abrir el menú */
+.mobile-menu.open {
+    right: 0;
+}
+
+.mobile-menu a {
+    color: rgba(255,255,255,0.92);
+    font-size: 18px;
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+
+.mobile-menu a:hover {
+    color: #fff;
+}
+
+/* Botón "Reservar" dentro del menú */
+.btn-reservar-menu {
+    margin-top: 10px;
+    padding: 10px 14px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Overlay que oscurece el fondo */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 997; /* Debe estar debajo del menú */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+
+
+
+
+
+
+
+/* --- 2. ESTILOS DEL HERO (TOTAL BLACK - TESLA STYLE) --- */
+
+.hero {
+    background-color: #000000;
+    padding: 120px 20px 80px; /* Padding ajustado con margen lateral seguro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden; 
+    width: 100%;
+}
+
+.hero-content {
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+/* Título Principal */
+.hero-title {
+    font-weight: 600;
+    font-size: clamp(32px, 5vw, 48px);
+    color: #FFFFFF;
+    line-height: 1.1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Subtítulo */
+.hero-subtitle {
+    font-size: 16px;
+    color: #C9C9C9; /* Gris secundario */
+    line-height: 1.5;
+    text-align: center;
+    max-width: 600px;
+    margin: 12px auto 32px auto;
+}
+
+/* Botón CTA (Estilo Outline Blanco) */
+.hero-cta {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: transparent;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.25s ease;
+    margin-bottom: 50px;
+}
+
+/* Hover del botón */
+.hero-cta:hover {
+    background-color: #111111; /* Gris oscuro sutil */
+    cursor: pointer;
+}
+
+/* Contenedor e Imagen del Auto */
+.hero-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-car {
+    width: 100%;
+    max-width: 1300px;
+    height: auto;
+    display: block;
+    /* Sombra sutil que se adapta al fondo oscuro */
+    filter: drop-shadow(0 10px 22px rgba(0,0,0,0.22));
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 600px) {
+    .hero {
+        padding: 100px 20px 60px;
+    }
+
+    .hero-car {
+        max-width: 90%; /* Margen en móvil */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================== */
+/* CÓMO FUNCIONA */
+/*=================================== */
+
+#como-funciona {
+    background: #000;
+    padding: 80px 24px;
+}
+
+.cf-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cf-title {
+    font-size: 2.4rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+.cf-steps {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+    /* Permite que las tarjetas bajen a mobile */
+    flex-wrap: wrap; 
+}
+
+.cf-step {
+    background: #000;
+    /* Borde 1px RGBA(255,255,255,0.12) */
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 32px 24px;
+    width: 100%;
+    /* 3 tarjetas: máximo 360px cada una */
+    max-width: 360px; 
+    transition: all 0.25s ease;
+    text-align: center; /* Centrar el contenido de la tarjeta */
+}
+
+.cf-step:hover {
+    /* Borde aumenta a RGBA(255,255,255,0.35) */
+    border-color: rgba(255,255,255,0.35);
+    /* Ligera elevación */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(255,255,255,0.05);
+}
+
+.cf-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cf-icon svg {
+    /* Tamaño ícono: 48px */
+    width: 48px;
+    height: 48px;
+    /* Color blanco lineal */
+    stroke: #fff; 
+    margin-bottom: 20px;
+}
+
+.cf-step h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: 600; /* Semibold */
+}
+
+.cf-step p {
+    /* Gris suave #D0D0D0 */
+    color: #d0d0d0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* MEDIA QUERY: RESPONSIVE MOBILE (<= 768px) */
+@media (max-width: 768px) {
+    #como-funciona {
+        /* Padding vertical 60px / horizontal 16px */
+        padding: 60px 16px; 
+    }
+
+    .cf-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    /* Las tarjetas ocupan todo el ancho en mobile */
+    .cf-step {
+        max-width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* SECCIÓN: TRANSPARENCIA Y REGULACIÓN (Ajustada) */
+/* ================================================= */
+
+.section-transparencia {
+    background: #000000;
+    /* Padding vertical: 120px desktop */
+    padding-top: 120px;
+    padding-bottom: 120px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.tr-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* Ajuste de Grid: 0.9fr 1.1fr */
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* --- Animación de los elementos (se aplica a .js-animate) --- */
+
+.js-animate {
+    /* Estado inicial: invisible y ligeramente desplazado */
+    opacity: 0;
+    transform: translateY(15px); 
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Estado al ser visible */
+.js-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Columna Izquierda: Título y Párrafo --- */
+
+.tr-left-column {
+    /* Max width de la columna izquierda */
+    max-width: 480px; 
+}
+
+.tr-icon-main {
+    /* Separación Ícono -> Título: 14px */
+    margin-bottom: 14px;
+}
+
+.tr-icon-main svg {
+    width: 60px;
+    height: 60px;
+    stroke: #FFFFFF;
+    transition: transform 0.3s ease;
+}
+
+.tr-icon-main svg:hover {
+    transform: scale(1.05);
+}
+
+.tr-title {
+    font-size: 36px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+    /* Separación Título -> Párrafo: 16px */
+    margin-bottom: 16px;
+}
+
+.tr-paragraph {
+    color: rgba(255,255,255,0.85);
+    /* Line-height ajustado: 1.55 */
+    line-height: 1.55; 
+    font-size: 18px;
+    /* No se necesita max-width aquí ya que el .tr-left-column ya lo tiene */
+}
+
+/* --- Columna Derecha: Lista de Checkmarks --- */
+
+.tr-item {
+    display: flex;
+    gap: 18px;
+    /* Separación entre items: 30px */
+    margin-bottom: 30px; 
+    /* Las propiedades de animación (opacity, transform) se movieron a .js-animate */
+}
+
+.tr-item:last-child {
+    margin-bottom: 0;
+}
+
+.tr-item-icon svg {
+    /* Ícono check: 24px */
+    width: 24px; 
+    height: 24px;
+    min-width: 24px;
+    stroke: #FFFFFF;
+    margin-top: 1px; /* Ajuste fino de alineación */
+}
+
+.tr-item h3 {
+    /* Título: 18px - 20px (dejamos 20px para un buen impacto) */
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.tr-item p {
+    /* Subtexto: 15px - 16px (usamos 16px) */
+    font-size: 16px; 
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+}
+
+
+/* ================================================= */
+/* MEDIA QUERY: RESPONSIVE (Móvil y Tablet < 900px) */
+/* ================================================= */
+
+@media (max-width: 900px) {
+    .section-transparencia {
+        /* Padding vertical reducido a 80px */
+        padding-top: 80px; 
+        padding-bottom: 80px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .tr-container {
+        /* Se vuelve columna única */
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+
+    /* Centrado de elementos en la columna izquierda */
+    .tr-left-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%; /* Eliminar restricción de ancho en móvil */
+    }
+
+    .tr-paragraph {
+        font-size: 16px;
+        max-width: 100%;
+    }
+    
+    .tr-title {
+        font-size: 26px;
+    }
+
+    /* Centrado de la lista de items */
+    .tr-right-column {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* Alinear el contenido del item a la izquierda (pero el bloque está centrado) */
+    .tr-item {
+        justify-content: flex-start; 
+        text-align: left;
+    }
+    
+    /* Asegurar que el ícono principal también esté centrado si está en el grid */
+    .tr-icon-main {
+        /* Ya está centrado por align-items: center; en .tr-left-column */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* SECCIÓN: PRÓXIMO SORTEO (ESTÉTICA PREMIUM) */
+/* ================================================= */
+
+#proximo-sorteo {
+    background: #000000;
+    /* Margin superior del título: 80px desktop / 60px mobile */
+    padding-top: 80px; 
+    padding-bottom: 80px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.ps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ps-title {
+    color: #fff;
+    font-size: 44px; /* Default: 44px (dentro del rango 42-48px) */
+    font-weight: 600; 
+    /* Separación entre el título y el subtítulo: 12px */
+    margin-bottom: 12px; 
+}
+
+.ps-subtitle {
+    color: rgba(255,255,255,0.7); /* Blanco opacidad 70% */
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+    /* Separación entre el subtítulo y la tarjeta: 60px desktop */
+    margin-bottom: 60px; 
+}
+
+/* Tarjeta Principal del Sorteo (Ultra-minimalista) */
+.sorteo-card {
+    display: flex;
+    flex-direction: column; /* Todo apilado y centrado */
+    align-items: center; /* Centrar horizontalmente */
+    max-width: 760px; /* Ancho máximo de la tarjeta */
+    margin: 0 auto;
+    
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.10); /* Borde sutil 10% */
+    border-radius: 16px; /* Esquinas redondeadas 16px */
+    
+    /* Padding: 72px 32px 60px 32px (desktop) */
+    padding: 72px 32px 60px 32px;
+    
+    /* Sombra extremadamente suave para dar efecto flotante */
+    box-shadow: 0 0 30px rgba(255,255,255,0.03); 
+    transition: transform 0.3s ease;
+}
+
+.sorteo-card:hover {
+    box-shadow: 0 0 40px rgba(255,255,255,0.06); /* Sombra más notable en hover */
+}
+
+/* Imagen del Premio */
+.sorteo-premio-img {
+    width: 100%; /* Ocupa todo el ancho de la tarjeta */
+    text-align: center;
+}
+
+.sorteo-premio-img img {
+    display: block;
+    max-width: 520px; /* Máximo 520px desktop */
+    width: 100%; /* Flexible, ajustado por el contenedor */
+    height: auto;
+    margin: 0 auto 32px auto;
+    /* Sombra para sobresalir visualmente */
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9));
+}
+
+/* Información del sorteo (Centrada) */
+.sorteo-info {
+    width: 100%;
+    text-align: center; 
+}
+
+.sorteo-info-title {
+    color: #fff;
+    font-size: 28px; /* Desktop: 28px */
+    font-weight: 700; /* Peso 700 */
+    margin-bottom: 12px;
+}
+
+.sorteo-info-date {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7); /* Blanco 70% opacidad */
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* "Soñadores: X / Y" */
+.sorteo-info-disponibilidad {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrado */
+    gap: 8px;
+    color: #FFF; /* Blanco 100% */
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 32px; /* Margen inferior 32px */
+}
+
+.sorteo-info-disponibilidad svg {
+    width: 18px;
+    height: 18px;
+    stroke: #fff;
+}
+
+/* Contador Regresivo (Bloques Premium) */
+.sorteo-contador {
+    display: flex;
+    justify-content: center; /* Centrado */
+    gap: 16px; /* Separación 16px desktop */
+}
+
+.cd-block {
+    /* Estilos del bloque */
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.25); /* Borde 25% */
+    border-radius: 12px;
+    padding: 18px;
+    width: 82px; /* Ancho 82px desktop */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.2s;
+}
+
+.cd-block:hover {
+    border-color: rgba(255,255,255,0.4);
+}
+
+.cd-number {
+    font-size: 32px; /* 28-32px desktop */
+    font-weight: 700;
+    color: #FFF;
+    line-height: 1;
+}
+
+.cd-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7); /* Opacidad 70% */
+    text-transform: uppercase;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* Botón CTA final (Ghost Button Premium) */
+.sorteo-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%; /* Ancho 100% */
+    height: 52px; /* Alto 52px */
+    
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.70); /* Borde 70% */
+    border-radius: 12px;
+    
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFF;
+    
+    margin-top: 40px;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.sorteo-btn:hover {
+    border-color: rgba(255,255,255,1); /* Hover: Borde 100% */
+    background-color: rgba(255,255,255,0.05); /* Fondo muy sutil */
+}
+
+/* ================================================= */
+/* MEDIA QUERY: AJUSTES PARA MOBILE (MAX 768px) */
+/* ================================================= */
+@media (max-width: 768px) {
+    #proximo-sorteo {
+        /* Margen superior del título: 60px mobile */
+        padding-top: 60px;
+        padding-bottom: 60px;
+        /* Márgenes laterales mínimos de 24px (ya cubierto por 16px en el padre) */
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .ps-title {
+        font-size: 32px; 
+    }
+    
+    .ps-subtitle {
+        font-size: 16px;
+        /* Separación entre el subtítulo y la tarjeta: 40px mobile */
+        margin-bottom: 40px; 
+    }
+
+    .sorteo-card {
+        /* Padding: 52px 24px 48px 24px (mobile) */
+        padding: 52px 24px 48px 24px;
+    }
+
+    /* Imagen del auto al 85% */
+    .sorteo-premio-img img {
+        width: 85%; 
+        max-width: 100%;
+        margin-bottom: 24px; 
+    }
+
+    .sorteo-info-title {
+        font-size: 24px; /* Mobile: 24px */
+    }
+
+    /* Contador */
+    .sorteo-contador {
+        gap: 12px; /* Separación 12px mobile */
+    }
+
+    .cd-block {
+        width: 72px; /* Ancho 72px mobile */
+        padding: 14px;
+    }
+
+    .cd-number {
+        font-size: 22px; /* Mobile: 22px */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* SECCIÓN: POR QUÉ ELEGIR SUEÑO CERO (PREMIUM) */
+/* ================================================= */
+
+.why-section {
+    background: #000;
+    padding: 80px 20px; /* Padding vertical 80px, horizontal 20px */
+    text-align: center;
+}
+
+/* Título */
+.why-section h2 {
+    color: #fff;
+    font-size: 2.4rem; /* 38.4px */
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+/* Subtítulo */
+.why-subtitle {
+    font-size: 1.05rem; /* ~16.8px */
+    color: rgba(255,255,255,0.75);
+    max-width: 700px;
+    margin: 0 auto;
+    /* AJUSTE 1: Mayor separación del subtítulo a las tarjetas */
+    margin-bottom: 48px; 
+}
+
+/* Grid de los beneficios (Contenedor principal) */
+.why-grid {
+    display: grid;
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Mobile: 1 columna */
+@media (max-width: 768px) {
+    .why-section {
+        padding: 60px 16px; /* Ajuste mobile */
+    }
+    .why-section h2 {
+        font-size: 2rem; /* ~32px */
+    }
+    .why-subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px; /* Ligero ajuste en mobile */
+    }
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Desktop: 3 columnas */
+@media (min-width: 769px) {
+    .why-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tarjetas (beneficios) */
+.why-card {
+    background: rgba(255,255,255,0.04); /* Fondo muy sutil */
+    border: 1px solid rgba(255,255,255,0.12); /* Borde 12% */
+    border-radius: 12px;
+    /* AJUSTE 2: Mayor padding interno para mejor respiración */
+    padding: 36px 30px;
+    
+    text-align: center;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover desktop: efecto flotante */
+@media (min-width: 769px) {
+    .why-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255,255,255,0.20); /* Borde más visible */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Sombra sutil para el levantamiento */
+    }
+}
+
+/* Iconos */
+.why-icon {
+    /* AJUSTE 3: Mayor tamaño y jerarquía */
+    font-size: 46px; 
+    color: #fff; /* Blanco puro */
+    margin-bottom: 24px;
+}
+
+/* Títulos de beneficios */
+.why-card h3 {
+    color: #fff;
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Texto de beneficios */
+.why-card p {
+    color: rgba(255,255,255,0.70); /* Blanco 70% opacidad */
+    font-size: 0.98rem; /* ~15.68px */
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* SECCIÓN: PREGUNTAS FRECUENTES (FAQ) */
+/* ================================================= */
+
+#faq-section {
+    background: #000;
+    padding: 80px 20px; /* Espaciado generoso */
+}
+
+.faq-container {
+    /* AJUSTE 8: Limitar el ancho en desktop y centrar mejor */
+    max-width: 760px; 
+    margin: 0 auto;
+    text-align: center;
+    /* AJUSTE 1: Aumentar el espacio entre título/subtítulo y el acordeón */
+    margin-top: 40px; 
+}
+
+/* Título */
+.faq-title {
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+/* Subtítulo */
+.faq-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85); /* AJUSTE 7: Mayor fuerza/opacidad (0.85) */
+    margin-bottom: 48px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contenedor de la lista de preguntas */
+.faq-list {
+    max-width: 700px; 
+    margin: 0 auto;
+}
+
+/* Tarjeta FAQ individual (Acordeón) */
+.faq-item {
+    background: #0c0c0c; 
+    border: 1px solid rgba(255,255,255,0.12); 
+    border-radius: 20px;
+    box-shadow: 0 0 22px rgba(255, 255, 255, 0.04);
+    
+    padding: 4px 0;
+    /* AJUSTE 1: Aumentar la separación entre cada ítem */
+    margin-bottom: 26px; 
+    overflow: hidden; 
+    /* AJUSTE 2: Transición suave del fondo y sombra */
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* AJUSTE 3: Hover suave en preguntas cerradas */
+.faq-item:not(.open):hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Botón / Pregunta */
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    padding: 26px 24px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* Flecha de rotación */
+.faq-arrow {
+    font-size: 22px; 
+    /* AJUSTE 4: Transición para la animación de la flecha */
+    transition: transform 0.2s ease;
+}
+
+/* Clase de apertura: Rotación de la flecha */
+.faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+}
+
+/* Contenedor de la respuesta */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    /* AJUSTE 2: Transición suave al abrir/cerrar */
+    transition: all 0.25s ease;
+    padding: 0 24px;
+}
+
+/* Clase de apertura: Muestra la respuesta */
+.faq-item.open .faq-answer {
+    max-height: 500px; 
+    /* AJUSTE 6: Más espacio interno en las respuestas */
+    padding-top: 10px;
+    padding-bottom: 16px;
+}
+
+/* Párrafo de la respuesta */
+.faq-answer p {
+    color: #d6d6d6; 
+    font-size: 15px;
+    /* AJUSTE 5: Line-height para mejor legibilidad */
+    line-height: 1.55; 
+}
+
+/* ================================================= */
+/* MEDIA QUERY: AJUSTES PARA MOBILE (MAX 768px) */
+/* ================================================= */
+@media (max-width: 768px) {
+    #faq-section {
+        padding: 60px 16px; 
+    }
+    
+    .faq-title {
+        font-size: 28px;
+    }
+
+    .faq-subtitle {
+        margin-bottom: 30px;
+    }
+
+    .faq-question {
+        font-size: 16px;
+        padding: 20px 20px;
+    }
+
+    .faq-arrow {
+        font-size: 20px; 
+    }
+
+    .faq-answer {
+        padding: 0 20px;
+    }
+
+    .faq-item.open .faq-answer {
+        /* Ajuste de padding-bottom para mobile */
+        padding-bottom: 15px; 
+    }
+
+    .faq-answer p {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* SECCIÓN: COMUNIDAD (ESTILO ESTÁTICO PREMIUM)      */
+/* ================================================= */
+
+/* Contenedor de la Sección */
+.comunidad-section {
+    background: #000000; /* Fondo negro puro (#000) */
+    padding-top: 120px; /* Amplio espaciado superior para "sección nueva" */
+    padding-bottom: 80px; 
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif; 
+}
+
+.comunidad-container {
+    max-width: 1100px; /* Contenedor central máximo */
+    margin: 0 auto;
+}
+
+/* Títulos y Subtítulos */
+.comunidad-title {
+    color: #ffffff;
+    font-size: 40px; 
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.comunidad-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 56px; 
+}
+
+/* --- CONTENEDOR ESTÁTICO DE TESTIMONIOS (GRID) --- */
+
+.comunidad-testimonials-grid {
+    display: grid;
+    /* Por defecto, 1 columna para móviles */
+    grid-template-columns: 1fr;
+    gap: 32px; /* Espacio vertical amplio en móvil */
+    width: 100%; 
+    max-width: 1000px; /* Limita el ancho del Grid para que no se extienda demasiado */
+    margin: 0 auto;
+}
+
+/* Estilos para cada slide (contenedor de la tarjeta) */
+.comunidad-slide {
+    display: flex;
+    justify-content: center; /* Centra la tarjeta */
+}
+
+/* Estilo de la Tarjeta (testimonial-card) */
+.testimonial-card {
+    background: #111111; /* Fondo #111 */
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 24px; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55), 
+                0 0 15px rgba(255, 255, 255, 0.05); 
+    width: 100%;
+    max-width: 450px; /* Máximo ancho en móvil/tablet */
+    padding: 48px 40px; 
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.testimonial-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px; 
+}
+
+.testimonial-icon svg {
+    width: 52px; 
+    height: 52px;
+    stroke-width: 2px;
+    color: #ffffff;
+}
+
+.testimonial-name {
+    color: #ffffff;
+    font-size: 24px; 
+    font-weight: 600; 
+    margin-bottom: 16px;
+}
+
+.testimonial-text {
+    color: rgba(255, 255, 255, 0.75); 
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6; 
+    margin: 0 auto;
+    max-width: 90%; 
+}
+
+/* Responsive (Tablet y Desktop - 768px y más) */
+@media (min-width: 768px) {
+    /* Aplicamos el diseño de 3 columnas iguales */
+    .comunidad-testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px; /* Espacio amplio entre tarjetas */
+        max-width: 1100px; /* Asegura que el grid respete el contenedor principal */
+    }
+    
+    .testimonial-card {
+        max-width: 100%; /* Ocupa el 100% de la columna */
+    }
+}
+
+/* Responsive (Móvil - Ajustes finos) */
+@media (max-width: 767px) {
+    .comunidad-section {
+        padding-top: 80px; 
+        padding-bottom: 80px; 
+    }
+    .comunidad-title {
+        font-size: 36px;
+    }
+    .comunidad-subtitle {
+        font-size: 18px;
+    }
+    .testimonial-card {
+        padding: 40px 32px; 
+    }
+    .testimonial-name {
+        font-size: 22px; 
+    }
+    .testimonial-text {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* SECCIÓN: CTA FINAL (CIERRE DE CONVERSIÓN PREMIUM)  */
+/* ================================================= */
+
+/* 1. SECCIÓN CONTENEDORA */
+.cta-final-section {
+    background: #000000; /* Fondo negro puro */
+    padding-top: 120px; /* Mucho aire arriba */
+    padding-bottom: 120px; /* Mucho aire abajo */
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    width: 100%;
+    font-family: 'Inter', sans-serif; 
+}
+
+/* 2. CONTENEDOR CENTRAL */
+.cta-final-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 3. TÍTULO FUERTE */
+.cta-final-container h2 {
+    color: #ffffff;
+    font-size: 42px; /* Desktop */
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+/* 4. SUBTÍTULO DESCRIPTIVO */
+.cta-final-container p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 20px; /* Desktop */
+    line-height: 1.5;
+    
+    max-width: 650px;
+    /* Margen auto para centrar y espacio al botón */
+    margin: 0 auto 40px auto; 
+}
+
+/* 5. BOTÓN CTA (.cta-final-btn) */
+.cta-final-btn {
+    /* Diseño base */
+    background: #ffffff;
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    
+    /* Forma y padding (más grande que el CTA intermedio) */
+    border-radius: 16px;
+    padding: 18px 48px; 
+    
+    /* Display y transición */
+    display: inline-block;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.cta-final-btn:hover {
+    background: #e6e6e6; 
+    transform: scale(1.03); /* Efecto sutil */
+}
+
+
+/* --- RESPONSIVE (Móvil y Tablet - max-width 768px) --- */
+@media (max-width: 768px) {
+    .cta-final-section {
+        padding-top: 80px; /* Reducir padding en móvil */
+        padding-bottom: 80px;
+    }
+    
+    .cta-final-container h2 {
+        font-size: 30px; /* Mobile title size */
+    }
+    
+    .cta-final-container p {
+        font-size: 16px; /* Mobile subtitle size */
+        margin-bottom: 32px;
+    }
+    
+    .cta-final-btn {
+        width: 80%; /* Botón ancho para móvil */
+        min-width: 280px;
+        padding: 16px 20px;
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* SECCIÓN: FOOTER (ULTRA MINIMALISTA Y PREMIUM)     */
+/* ================================================= */
+
+#footer {
+    background: #000000; /* Fondo negro puro */
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Inter', sans-serif; 
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+/* --- LOGO Y NOMBRE --- */
+.footer-logo {
+    margin-bottom: 40px; /* Separación amplia del bloque de navegación */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo .logo-img {
+    width: 120px; /* Ancho solicitado */
+    height: auto;
+    max-height: 120px; /* Para mantener la proporción */
+    object-fit: contain;
+}
+
+.footer-logo .logo-text {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 12px; /* Espacio debajo del logo */
+    margin-bottom: 0;
+}
+
+/* --- ENLACES RÁPIDOS (NAVEGACIÓN) --- */
+.footer-nav {
+    display: flex; /* En desktop, en línea */
+    justify-content: center;
+    gap: 26px; /* Separación entre enlaces */
+    margin-bottom: 40px; /* Separación del bloque de contacto */
+}
+
+.footer-nav a {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: #ffffff; /* Blanco sólido en hover */
+}
+
+/* --- CONTACTO --- */
+.footer-contact {
+    display: flex;
+    flex-direction: column; /* Siempre en columna */
+    align-items: center;
+    gap: 10px; /* Espacio vertical de 6-10px */
+    margin-top: 30px; 
+}
+
+.footer-contact .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-contact .contact-link:hover {
+    color: #ffffff;
+}
+
+.footer-contact svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2px;
+}
+
+/* --- LÍNEA LEGAL --- */
+.footer-legal {
+    color: rgba(255, 255, 255, 0.5); /* Opacidad al 50% */
+    font-size: 13px;
+    margin-top: 45px; /* Espacio amplio superior */
+}
+
+/* --- RESPONSIVE (Móvil) --- */
+@media (max-width: 768px) {
+    .footer-container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    .footer-logo {
+        margin-bottom: 30px;
+    }
+
+    /* Los enlaces de navegación pasan a columna */
+    .footer-nav {
+        flex-direction: column;
+        gap: 18px; /* Espacio vertical entre enlaces de navegación */
+        margin-bottom: 30px;
+    }
+    
+    .footer-nav a {
+        font-size: 18px; /* Ligeramente más grandes para tocar en móvil */
+    }
+    
+    .footer-legal {
+        margin-top: 40px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* =============================== */
+/*        FORMULARIO RESERVA       */
+/* =============================== */
+
+#form-reserva {
+    width: 90%;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 14px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+#form-reserva h3 {
+    margin-bottom: 18px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+/* Labels */
+#form-reserva label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Inputs */
+#form-reserva input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #000;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+#form-reserva input:focus {
+    border-color: #fff;
+}
+
+/* Botón */
+#form-reserva button {
+    margin-top: 24px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#form-reserva button:hover {
+    background: #ddd;
+}
+
+/* Mensaje */
+#mensaje {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 15px;
+}
